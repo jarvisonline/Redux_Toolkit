@@ -17,8 +17,10 @@ const AddPostForm = () => {
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onContentChanged = (e) => setContent(e.target.value);
   const onAuthorChanged = (e) => setUserId(e.target.value);
+
   const canSave =
     [title, content, userId].every(Boolean) && addRequestStatus === "idle";
+
   const onSavePostClicked = () => {
     if (canSave) {
       try {
@@ -36,12 +38,11 @@ const AddPostForm = () => {
     }
   };
 
-  const usersOptions =
-    users?.map((user) => (
-      <option key={user.id} value={user.id}>
-        {user.name}
-      </option>
-    )) || [];
+  const usersOptions = users.map((user) => (
+    <option key={user.id} value={user.id}>
+      {user.name}
+    </option>
+  ));
 
   return (
     <section>
@@ -74,5 +75,4 @@ const AddPostForm = () => {
     </section>
   );
 };
-
 export default AddPostForm;
